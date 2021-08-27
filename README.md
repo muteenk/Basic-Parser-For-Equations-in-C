@@ -119,6 +119,24 @@ will give the output :
 
 ### Errors and Fixes
 
+- Less Arguments
+    This error occurs when only './calc' or './calc.exe' is written as command without any expression
+
+```bash
+    $ ./calc
+    Fatal Error:
+    Too less arguments were given !
+``` 
+
+- Too Many Arguments
+    This error occurs when more than one argument is given or spaces are used in expression
+
+```bash
+    $ ./calc 4+ 3
+    Fatal Error:
+    More than one arguments entered !
+``` 
+
 - Zero Division Errors: 
     These may occur when you divide something with zero, It could be any number including zero itself
 

@@ -48,6 +48,14 @@ char *eqn;
 // Parsing Numbers
 double parseNumber(){
 
+    // Will work in case of negation of an expression inside bracket
+    if (*eqn == '('){
+        eqn++;  // Ignoring '('
+        double result = parseSubtraction();
+        eqn++;  // Ignoring ')'
+        return result;
+    }
+
     double number = 0;
 
     // 123 = (((0*10 + 1)*10 + 2)*10 + 3)

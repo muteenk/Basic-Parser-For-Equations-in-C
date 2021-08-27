@@ -1,6 +1,7 @@
 
 
 #include <stdio.h>
+#include <math.h>
 
 
 ///////////////////////
@@ -10,6 +11,7 @@
 double checkFactor();
 double parseNumber();
 double parsePercent();
+double parseExponent();
 double parseDivision();
 double parseProduct();
 double parseSum();
@@ -152,16 +154,39 @@ double parsePercent(){
 
 
 
+
+// Parsing Exponent (if any)
+double parseExponent(){
+
+    double per1 = parsePercent();
+
+    while (*eqn == '^')
+    {
+        eqn++;  // Ignoring '^'
+        double per2 = parsePercent();
+        per1 = pow(per1, per2);        
+    }
+    return per1;
+
+
+}
+
+
+
+
+
+
+
 // Parses Division (if any)
 double parseDivision(){
 
-    double per1 = parsePercent();
+    double exp1 = parseExponent();
 	while (*eqn == '/'){
 		eqn++;  // ignoring '/'
-		double per2 = parsePercent();
-		per1 = per1 / per2;
+		double exp2 = parseExponent();
+		exp1 = exp1 / exp2;
 	}
-	return per1;
+	return exp1;
 
 }
 

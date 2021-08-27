@@ -48,6 +48,14 @@ char *eqn;
 // Parsing Numbers
 double parseNumber(){
 
+    // For Error Handling
+
+    if (*eqn != '(' && !(*eqn >= '0' && *eqn <= '9')){
+        printf("Error:\nInvalid Character '%c' Found !\n", *eqn);
+        return 0;
+    }
+
+
     // Will work in case of negation of an expression inside bracket
     if (*eqn == '('){
         eqn++;  // Ignoring '('
